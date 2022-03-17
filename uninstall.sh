@@ -36,7 +36,7 @@ rm -rf $HOME/masa-node-v1.0 $HOME/go
 sleep 2
 
 cd /usr/local/bin
-rm abidump abigen bootnode checkpoint-admin clef devp2p ethkey evm faucet geth p2psim puppeth rlpdumb
+rm abidump abigen bootnode checkpoint-admin clef devp2p ethkey evm faucet geth p2psim puppeth
 cd
 
 sleep 3
