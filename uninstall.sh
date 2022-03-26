@@ -28,21 +28,40 @@ echo -e ""
 
 echo -e "\033[0m"
 
-systemctl stop masad
-systemctl disable masad
-rm /etc/systemd/system/masad.service
-rm -rf $HOME/masa-node-v1.0 $HOME/go
 
-sleep 2
+#$a="Deleting the node"
+#echo -e $a
 
-cd /usr/local/bin
-rm abidump abigen bootnode checkpoint-admin clef devp2p ethkey evm faucet geth p2psim puppeth
-cd
 
-sleep 3
+echo -e "\033[35m"
+printf "Deleting the node"
+echo -e "\033[0m"
+
+for((sec=0; sec<4; sec++))
+do
+        echo -e "\033[35m"
+        printf "."
+        echo -e "\033[0m"
+        sleep 1
+        if [ $sec -eq 0 ]; then
+                cd $HOME/aptos
+        elif [ $sec -eq 1 ]; then
+                docker compose down
+        elif [ $sec -eq 2 ]; then
+                rm -rf $HOME/aptos
+        elif [ $sec -eq 3 ]; then
+                cd
+                rm aptos.sh aptos_identity.sh aptos_renew_seeds.sh 
+                rm -rf $HOME/pathfinder $HOME/snap
+        fi
+done
+
 
 echo -e "\033[35m"
 echo -e "The node was uninstalled successfully"
 echo -e "\033[0m"
+
+
+
 
 
